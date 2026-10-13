@@ -4,6 +4,9 @@ import './App.css'
 import WorkoutPlans from './WorkoutPlans'
 import DailyActivityTracker from './DailyActivityTracker'
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+
 function App() {
   const [isLogin, setIsLogin] = useState(true)
   const [name, setName] = useState('')
@@ -49,9 +52,8 @@ function App() {
 
     try {
       const url = isLogin
-        ? 'http://localhost:8080/users/login'
-        : 'http://localhost:8080/users'
-
+  ? `${API_BASE_URL}/users/login`
+  : `${API_BASE_URL}/users`
       const body = isLogin
         ? {
             email: email.trim(),

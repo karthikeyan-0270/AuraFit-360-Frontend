@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const API_URL = 'http://localhost:8080'
+const API_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
 
 // TEST MODE: true gives each workout a 30-second timer so you can test quickly.
 // When you are ready for real workout durations, change this to false.

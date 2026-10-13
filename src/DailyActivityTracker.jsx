@@ -1,6 +1,8 @@
-
 import { useEffect, useState } from 'react'
 import './DailyActivityTracker.css'
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
 
 function DailyActivityTracker({ userEmail, onActivityChange }) {
   const [steps, setSteps] = useState(0)
@@ -27,9 +29,9 @@ function DailyActivityTracker({ userEmail, onActivityChange }) {
       setMessage('')
 
       try {
-        const response = await fetch(
-          `http://localhost:8080/daily-activity?email=${encodeURIComponent(email)}`
-        )
+       const response = await fetch(
+  `${API_BASE_URL}/daily-activity?email=${encodeURIComponent(email)}`
+)
 
         if (!response.ok) {
           throw new Error('Could not load daily activity.')
@@ -99,7 +101,7 @@ function DailyActivityTracker({ userEmail, onActivityChange }) {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/daily-activity?email=${encodeURIComponent(email)}`,
+        `${API_BASE_URL}/daily-activity?email=${encodeURIComponent(email)}`,
         {
           method: 'POST',
           headers: {
